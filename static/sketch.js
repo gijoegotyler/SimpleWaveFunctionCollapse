@@ -78,18 +78,18 @@ class gridComponent {
 }
 
 class Grid {
-    constructor(size, options, canvas, context) {
+    constructor(sizeOfBlock, options, canvas, context) {
         this.grid = [];
-        for (let i = 0; i < canvas.height / size; i++) {
+        for (let i = 0; i < canvas.height / sizeOfBlock; i++) {
             let row = [];
-            for (let j = 0; j < canvas.width / size; j++) {
+            for (let j = 0; j < canvas.width / sizeOfBlock; j++) {
                 row.push(new gridComponent(options));
             }
             this.grid.push(row);
         }
         this.canvas = canvas;
         this.context = context;
-        this.size;
+        this.size = sizeOfBlock;
     }
 
     display() {
@@ -111,5 +111,26 @@ class Grid {
         }
     }
 
-    checkAvailable() {}
+    checkAvailable() {
+        let lowestScore;
+        let lowestPositions = [];
+        for (let i = 0; i < this.canvas.height / this.size; i++) {
+            for (let j = 0; j < this.canvas.width / this.size; j++) {
+                if (this.grid[i][j].getSelected() != "") {}
+            }
+        }
+    }
+
+    buildGrid() {
+        let gridExisting;
+        for (let i = 0; i < this.canvas.height / this.size; i++) {
+            for (let j = 0; j < this.canvas.width / this.size; j++) {
+                gridExisting[i][j] = this.grid[i][j].getSelected();
+            }
+        }
+    }
 }
+
+let myGrid = new Grid(50, options, c, ctx);
+//myGrid.buildGrid();
+//myGrid.display();
